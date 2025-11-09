@@ -1,0 +1,19 @@
+name: My First CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Print welcome message
+      run: echo "Hello World! This is my first GitHub Action!"
+      
+    - name: List files
+      run: ls -la
