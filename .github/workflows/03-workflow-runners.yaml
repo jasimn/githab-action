@@ -1,0 +1,10 @@
+name: 03 - workflow
+on: push
+jobs:
+  ubuntu-echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show os
+        run: |
+          echo "this job is running in the ubuntu-os"
+          echo "runner os: $RUNNER_OS"
