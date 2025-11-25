@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 # .github/workflows/05-1-filters-activity-types.yaml
+=======
+>>>>>>> 7b4cfb9 (added)
 name: 05 - 1 - Event Filters and Activity Types
 
 on:
   pull_request:
     types: [opened, synchronize]
+<<<<<<< HEAD
     branches:
       - main
 
@@ -13,3 +17,14 @@ jobs:
     steps:
       - name: Print message
         run: echo "Running whenever a PR is opened or synchronized AND base branch is main."
+=======
+    branches: [main]
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    name: Echo PR Activity
+    steps:
+      - name: Print PR message
+        run: echo "Running whenever a PR is opened or synchronized AND base branch is main" 
+ 
+>>>>>>> 7b4cfb9 (added)
