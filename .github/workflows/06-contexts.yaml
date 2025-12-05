@@ -33,7 +33,7 @@ jobs:
           echo "Run number: ${{ github.run_number }}"
 
       - name: Retrieve Variable
-        run: echo "MY_VAR value: ${{ vars.MY_VAR }}"
+        run: echo "MY_VAR value: ${{ vars.MY_JOB_VAR }}"
 
       - name: Print Env Variables (Step-Level Override)
         env:
