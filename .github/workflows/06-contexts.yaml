@@ -1,5 +1,5 @@
-name: 06 - Contexts
-run-name: 06 - Contexts | DEBUG - ${{ inputs.debug }}
+name: "06 - Contexts"
+run-name: "06 - Contexts | DEBUG - ${{ inputs.debug }}"
 
 on:
   workflow_dispatch:
@@ -16,6 +16,7 @@ env:
 jobs:
   echo-data:
     runs-on: ubuntu-latest
+
     env:
       MY_JOB_VAR: "job"
       MY_OVERWRITTEN_VAR: "job"
@@ -34,14 +35,16 @@ jobs:
       - name: Retrieve Variable
         run: echo "MY_VAR value: ${{ vars.MY_VAR }}"
 
-      - name: Print Env Variables
+      - name: Print Env Variables (Step-Level Override)
         env:
           MY_OVERWRITTEN_VAR: "step"
         run: |
-          echo "Workflow env: $MY_WORKFLOW_VAR"
-          echo "Overwritten env: $MY_OVERWRITTEN_VAR"
+          echo "Workflow env variable: $MY_WORKFLOW_VAR"
+          echo "Overwritten env variable (STEP): $MY_OVERWRITTEN_VAR"
+          echo "Job-level env: $MY_JOB_VAR"
 
-      - name: Print Env Variables 2
+      - name: Print Env Variables 2 (No Override)
         run: |
-          echo "Workflow env: $MY_WORKFLOW_VAR"
-          echo "Overwritten env: $MY_OVERWRITTEN_VAR"
+          echo "Workflow env variable: $MY_WORKFLOW_VAR"
+          echo "Overwritten env variable (JOB): $MY_OVERWRITTEN_VAR"
+          echo "Job-level env: $MY_JOB_VAR"
