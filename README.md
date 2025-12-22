@@ -1,2 +1,1 @@
-this is github action test.
-It has been edited
+Testing GitHub Actions PR workflow
