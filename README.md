@@ -1,1 +1,1 @@
-Testing GitHub Actions PR workflow
+testing GitHub Action PR workflow
