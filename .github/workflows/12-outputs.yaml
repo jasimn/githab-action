@@ -22,11 +22,13 @@ jobs:
 
       - name: Build
         id: build
-        run: echo "status=${{ inputs.build_status }}" >> "$GITHUB_OUTPUT"
+        # We use github.event.inputs to ensure the value is correctly resolved
+        run: echo "status=${{ github.event.inputs.build_status }}" >> "$GITHUB_OUTPUT"
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
+    # In an 'if' conditional, you don't need the ${{ }} wrappers
     if: needs.build.outputs.build_status == 'success'
     steps:
       - name: Deploy
