@@ -7,16 +7,17 @@ on:
 
 jobs:
   scan:
-    name: gitleaks
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # important for full history scan
+          fetch-depth: 0   # REQUIRED
 
-      - name: Run Gitleaks
+      - name: Run Gitleaks (full scan)
         uses: gitleaks/gitleaks-action@v2
+        with:
+          args: detect --source . --verbose
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
