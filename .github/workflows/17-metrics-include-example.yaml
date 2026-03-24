@@ -22,4 +22,4 @@ jobs:
 
     steps:
       - name: Dummy step
-        run: echo "${{ matrix.color }}-${{ matrix.shape }}-${{ matrix.size }}"
+        run: echo "${{ matrix.color }}-${{ matrix.shape }}-${{ matrix.size }}-${{matrix.tag}}"
