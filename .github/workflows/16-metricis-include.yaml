@@ -1,0 +1,45 @@
+name: 15 - Working with Matrices
+
+on:
+  workflow_dispatch:
+
+jobs:
+  backwards-compatibility:
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.os }}-${{ matrix.node-version }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [18.x, 20.x, 21.x]
+        os: [ubuntu-latest, windows-latest]
+
+        include:
+          # Add Node 16 only for ubuntu
+          - os: ubuntu-latest
+            node-version: 16.x
+
+          # Add experimental tag for specific combo
+          - os: ubuntu-latest
+            node-version: 21.x
+            tag: experimental
+
+    steps:
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Fail if experimental
+        if: ${{ matrix.tag == 'experimental' }}
+        run: |
+          echo "Experimental build - failing intentionally"
+          exit 1
+
+      - name: Perform some tests
+        run: |
+          echo "Running tests on OS ${{ matrix.os }} and NodeJS ${{ matrix.node-version }}"
+          sleep 10
+
+      - name: Upload test results
+        run: echo "Uploading test results"
