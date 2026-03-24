@@ -17,7 +17,8 @@ jobs:
 
         include:
           - color: red
-            shape: triangle
+            shape: circle
+            tag: nile-house
 
     steps:
       - name: Dummy step
