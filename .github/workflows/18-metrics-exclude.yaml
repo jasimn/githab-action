@@ -1,4 +1,4 @@
-name: 20 - Exploring Exclude Option
+name: 18- Exploring Exclude Option
 
 on:
   workflow_dispatch:
