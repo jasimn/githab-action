@@ -7,8 +7,6 @@ on:
         type: environment
         default: staging
 
-run-name: 16 - Working with Environments | env - ${{ inputs.target-env }}
-
 jobs:
   echo:
     runs-on: ubuntu-latest
