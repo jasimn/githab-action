@@ -1,0 +1,27 @@
+name: Environment Working Demo
+
+on:
+  workflow_dispatch:
+    inputs:
+      target-env:
+        description: "Select environment"
+        type: environment
+        default: staging
+
+jobs:
+  test-env:
+    runs-on: ubuntu-latest
+
+    # Link environment
+    environment: ${{ inputs.target-env }}
+
+    # Define env variable from GitHub environment
+    env:
+      my_env_value: ${{ vars.MY_ENV_VALUE || 'default-value' }}
+
+    steps:
+      - name: Show Environment Info
+        run: |
+          echo "Selected Environment: ${{ inputs.target-env }}"
+          echo "From vars: ${{ vars.MY_ENV_VALUE }}"
+          echo "From env: $my_env_value"
