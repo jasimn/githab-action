@@ -15,4 +15,4 @@ jobs:
         uses: ./composite-cache-deps
         with:
           node-version: 20.x
-          working-dir: .
+          working-dir: ./13-caching/react-app
