@@ -1,5 +1,3 @@
-name: 16 - Working with Environments
-
 on:
   workflow_dispatch:
     inputs:
